@@ -1,0 +1,40 @@
+{
+  "name": "kyro-launcher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KYRO Minecraft 1.21.1 Fabric Launcher",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.app.json && vite build",
+    "build:electron": "tsc -p electron/tsconfig.json",
+    "package": "npm run build && npm run build:electron && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.468.0",
+    "minecraft-launcher-core": "^3.18.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.5",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.kyro.launcher",
+    "productName": "KYRO Launcher",
+    "directories": { "output": "release" },
+    "files": ["dist/**/*", "dist-electron/**/*", "package.json", "node_modules/**/*"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }], "artifactName": "KYRO-Launcher-${version}-Setup.${ext}" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true }
+  }
+}
