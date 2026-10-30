@@ -1,0 +1,2 @@
+/// <reference types="vite/client" />
+interface Window{kyro:{minimize:()=>void;close:()=>void;getStatus:()=>Promise<any>;install:()=>Promise<{ok:boolean;error?:string}>;launch:(o:{username:string;ram:number})=>Promise<{ok:boolean;error?:string}>;chooseJava:()=>Promise<string|null>;setSettings:(s:{username?:string;ram?:number;javaPath?:string})=>Promise<any>;onProgress:(cb:(p:{percent:number;message:string})=>void)=>()=>void;onLog:(cb:(s:string)=>void)=>()=>void}}
